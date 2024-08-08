@@ -80,6 +80,18 @@ const onPopupOpen = () => {
   getLoadImage();
 };
 
+const setOnFormSubmit = (callback) => {
+  form.addEventListener('submit', async (evt) => {
+    evt.preventDefault();
+    const isValid = pristine.validate();
+    if(isValid){
+      toggleSubmitButton(true);
+      await callback(new FormData(form));
+      toggleSubmitButton();
+    }
+  });
+};
+
 pristine.addValidator(
   inputHeshtagsElement,
   hasValidCount,
@@ -102,17 +114,14 @@ pristine.addValidator(
   true
 );
 
-const onFormSubmit = (callback) => {
-  form.addEventListener('submit', async (evt) => {
+
+const onFormSubmit = (evt) => {
+  const isValid = pristine.validate();
+  if (!isValid) {
     evt.preventDefault();
-    const isValid = pristine.validate();
-    if(isValid){
-      toggleSubmitButton(true);
-      await callback(new FormData(form));
-      toggleSubmitButton();
-    }
-  });
+  }
 };
+
 //обработчик закрытия Esс
 function onDocumentKeydown (evt) {
   // eslint-disable-next-line no-use-before-define
@@ -126,4 +135,4 @@ uploadInputElement.addEventListener('change', onPopupOpen);
 buttonCloseUploadElement.addEventListener('click', onPopupClose);
 form.addEventListener('submit', onFormSubmit);
 
-export {onFormSubmit, getCloseLoad};
+export {setOnFormSubmit, getCloseLoad};
