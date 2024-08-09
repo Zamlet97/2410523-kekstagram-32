@@ -1,3 +1,4 @@
+//обращение к серверу с константами
 const BASE_URL = 'https://32.javascript.htmlacademy.pro/kekstagram';
 const Route = {
   GET_DATA: '/data',
@@ -8,6 +9,7 @@ const Method = {
   POST: 'POST',
 };
 
+//взаимодействие с сервером
 const load = (route, method = Method.GET, body = null) =>
   fetch(`${BASE_URL}${route}`, {method, body})
     .then((response) => {
@@ -19,7 +21,11 @@ const load = (route, method = Method.GET, body = null) =>
     .catch((err) => {
       throw new Error(err.message);
     });
+
+// Получение данных
 const getData = () => load(Route.GET_DATA);
+
+//отправление данных
 const sendData = (body) => load(Route.SEND_DATA, Method.POST, body);
 
 export {getData, sendData};

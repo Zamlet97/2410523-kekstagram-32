@@ -1,5 +1,5 @@
 import {resetScalePicture} from './scale-picture';
-import { resetEffectPicture } from './effect-picture';
+import { initEffectPicture, resetEffectPicture } from './effect-picture';
 
 const body = document.querySelector('body');
 const form = document.querySelector('.img-upload__form');
@@ -122,10 +122,12 @@ const onFormSubmit = (evt) => {
   }
 };
 
+const isErrorMessageShown = () => Boolean(document.querySelector('.error'));
+
 //обработчик закрытия Esс
 function onDocumentKeydown (evt) {
   // eslint-disable-next-line no-use-before-define
-  if (evt.key === 'Escape' && !isTextFocused()) {
+  if (evt.key === 'Escape' && !isTextFocused() && !isErrorMessageShown()) {
     evt.preventDefault();
     getCloseLoad();
   }
@@ -134,5 +136,6 @@ function onDocumentKeydown (evt) {
 uploadInputElement.addEventListener('change', onPopupOpen);
 buttonCloseUploadElement.addEventListener('click', onPopupClose);
 form.addEventListener('submit', onFormSubmit);
+initEffectPicture();
 
 export {setOnFormSubmit, getCloseLoad};

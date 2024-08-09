@@ -6,6 +6,8 @@ import {getData, sendData} from './api.js';
 import {showAlert} from './utils.js';
 import {showSuccessMessage, showErrorMessage} from './message.js';
 
+
+//Получение данных из сервера
 setOnFormSubmit(async (data) => {
   try {
     await sendData(data);
