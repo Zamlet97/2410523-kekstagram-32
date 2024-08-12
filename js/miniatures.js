@@ -13,7 +13,6 @@ const createImages = (picture) => {
   return imageElement;
 };
 
-
 const generateMiniatures = (pictures) => {
   userImageElement.querySelectorAll('.picture').forEach((element) => element.remove());
   const fragment = document.createDocumentFragment();
@@ -24,6 +23,5 @@ const generateMiniatures = (pictures) => {
 
   userImageElement.append(fragment);
 };
-
 
 export{createImages, generateMiniatures};

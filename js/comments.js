@@ -8,7 +8,6 @@ const NEXT_NUBERS_QTY = 5;
 let NumbersComments = [];
 let startIndex = 0;
 
-
 //создание 1 комента
 const getUserComment = ({avatar, name, message }) => {
   const itemComment = socialCommentElement.cloneNode(true);
@@ -16,7 +15,6 @@ const getUserComment = ({avatar, name, message }) => {
   socialPictureElement.src = avatar;
   socialPictureElement.alt = name;
   itemComment.querySelector('.social__text').textContent = message;
-
   return itemComment;
 };
 
@@ -24,7 +22,6 @@ const getUserComment = ({avatar, name, message }) => {
 const getLoadComments = () => {
   const endIndex = Math.min(startIndex + NEXT_NUBERS_QTY, NumbersComments.length);
   commetsShownElement.textContent = endIndex;
-
   NumbersComments.slice(startIndex, endIndex).forEach((element) => {
     const listComment = getUserComment(element);
     socialListCommentsElement.append(listComment);

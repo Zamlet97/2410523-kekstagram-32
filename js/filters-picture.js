@@ -28,7 +28,6 @@ const getFilteredPictures = () => {
   }
 };
 
-
 //Обработчик клика по фильтрам
 const setOnFilterClick = (callback) => {
   filterElement.addEventListener('click', (evt) => {
