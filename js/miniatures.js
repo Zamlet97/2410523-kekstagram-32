@@ -1,5 +1,5 @@
-const userImage = document.querySelector('.pictures');
-const miniaturesTemplate = document.querySelector('#picture').content.querySelector('.picture');
+const userImageElement = document.querySelector('.pictures');
+const miniaturesTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
 
 const createImages = (picture) => {
   const imageElement = miniaturesTemplateElement.cloneNode(true);
@@ -9,7 +9,6 @@ const createImages = (picture) => {
   imageElement.querySelector('.picture__likes').textContent = picture.likes;
   imageElement.querySelector('.picture__comments').textContent = picture.comments.length;
   itemImageElement.dataset.pictureId = picture.id;
-
   return imageElement;
 };
 
@@ -20,7 +19,6 @@ const generateMiniatures = (pictures) => {
     const miniature = createImages(picture);
     fragment.append(miniature);
   });
-
   userImageElement.append(fragment);
 };
 
