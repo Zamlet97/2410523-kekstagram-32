@@ -1,5 +1,5 @@
-const userImageElement = document.querySelector('.pictures');
-const miniaturesTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
+const userImage = document.querySelector('.pictures');
+const miniaturesTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
 const createImages = (picture) => {
   const imageElement = miniaturesTemplateElement.cloneNode(true);
